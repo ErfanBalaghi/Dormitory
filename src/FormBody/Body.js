@@ -1,4 +1,6 @@
 import { Box, Container } from "@mui/material";
+import FormHeader from "./FormHeader";
+import Form from "./Form";
 
 function Body() {
   return (
@@ -14,7 +16,8 @@ function Body() {
             padding: "25px .75rem"
           }}
         >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet ab a commodi laboriosam deleniti accusamus vitae, aspernatur aliquid quae, molestiae dolore, iusto culpa tenetur sunt nisi facere. Eligendi soluta debitis ex aliquid nulla aliquam est sapiente repudiandae ipsam? Provident incidunt minus pariatur aperiam vitae repellendus nobis nulla est ad veniam quibusdam temporibus expedita in, itaque iure consequuntur voluptatum id tempora odio hic natus, atque voluptate eligendi! Beatae expedita hic quo illum labore praesentium nam, est laudantium necessitatibus nihil nisi molestias temporibus debitis, non, quas accusamus. Explicabo, consequatur pariatur ipsa a eaque voluptatum, iste nihil nesciunt repudiandae repellat hic quo assumenda!
+          <FormHeader />
+          <Form />
         </Box>
       </Container>
     </>
