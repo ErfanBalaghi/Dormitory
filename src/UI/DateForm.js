@@ -8,7 +8,6 @@ function DateForm({ data, labelID, formik }) {
   const disabled = data.disabled;
   const dependency = disabled && formik.getFieldMeta(disabled);
   function dependencyDateHandler(value) {
-    console.log(dependency.value);
     const [key, params] = Object.entries(value)[0];
 
     if (key && typeof dayjs()[key] === "function") {
@@ -16,7 +15,6 @@ function DateForm({ data, labelID, formik }) {
         params[1],
         params[0]
       );
-      console.log(res?.["$d"]);
       return res?.["$d"];
     }
   }
@@ -31,6 +29,7 @@ function DateForm({ data, labelID, formik }) {
     >
       <LocalizationProvider dateAdapter={AdapterDateFnsJalali}>
         <DatePicker
+          fullWidth
           disabled={disabled && !dependency.value}
           label={data.label}
           name={labelID}
@@ -44,10 +43,16 @@ function DateForm({ data, labelID, formik }) {
             },
           }}
           maxDate={
-            data.dependencyMaxDate ? dependency.value && dependencyDateHandler(data.dependencyMaxDate) : data.maxDate?.["$d"]
+            data.dependencyMaxDate
+              ? dependency.value &&
+                dependencyDateHandler(data.dependencyMaxDate)
+              : data.maxDate?.["$d"]
           }
           minDate={
-            data.dependencyMinDate ? dependency.value && dependencyDateHandler(data.dependencyMinDate) : data.minDate?.["$d"]
+            data.dependencyMinDate
+              ? dependency.value &&
+                dependencyDateHandler(data.dependencyMinDate)
+              : data.minDate?.["$d"]
           }
         />
       </LocalizationProvider>

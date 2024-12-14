@@ -11,6 +11,7 @@ import CallIcon from "@mui/icons-material/Call";
 import { red, blueGrey } from "@mui/material/colors";
 
 import logo from "../Image/logo.png";
+import DialogForm from "../UI/DialogForm";
 
 function Header() {
   return (
@@ -41,16 +42,7 @@ function Header() {
               alt="تصویر نمونه"
               src={logo}
             />
-            <Button
-              variant="outlined"
-              sx={{
-                color: "black",
-                borderColor: red[600],
-                "&:hover": { backgroundColor: "white" },
-              }}
-            >
-              شرایط و ضوابط استفاده از اردوگاه های بهزیستی کشور
-            </Button>
+            <DialogForm />
           </Stack>
           <Stack
             direction="row"

@@ -5,11 +5,12 @@ import * as Yup from "yup";
 
 import { Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-
-import SelectForm from "../UI/SelectForm";
-import TextFieldForm from "../UI/TextFieldForm";
-import DateForm from "../UI/DateForm";
 import dayjs from "dayjs";
+
+import FormItem from "./FormItem";
+import SelectForm from "../UI/SelectForm";
+import DateForm from "../UI/DateForm";
+import TextFieldForm from "../UI/TextFieldForm";
 
 const allFieldsValue = {
   firstName: {
@@ -34,9 +35,6 @@ const allFieldsValue = {
   },
   job: {
     label: "شغل",
-  },
-  address: {
-    label: "آدرس",
   },
   address: {
     label: "آدرس",
@@ -68,10 +66,10 @@ const allFieldsValue = {
     label: "نوع سفر",
     type: "select",
     values: [
-      ["mamoriat", "ماموریت"],
-      ["siahat", "سیاحتی"],
-      ["ziarat", "زیارتی"],
-      ["varzeshi", "ورزشی"],
+      ["ماموریت", "ماموریت"],
+      ["سیاحتی", "سیاحتی"],
+      ["زیارتی", "زیارتی"],
+      ["ورزشی", "ورزشی"],
     ],
   },
 };
@@ -156,59 +154,71 @@ function Form() {
       }
     }
 
-    // if (!stateValue) {
-    //   getStateAPI("state");
-    // } else {
-    //   getStateAPI("city");
-    // }
+    if (!stateValue) {
+      getStateAPI("state");
+    } else {
+      getStateAPI("city");
+    }
   }, [formik.getFieldMeta("state").value]);
+  
+  // console.log(formik);
 
   return (
-    <>
-      <form className="pt-4">
-        <Grid container spacing={3}>
-          {objectKeys.map((item) => {
-            return (
-              <Grid key={item} size={3}>
-                {formFields[item].type === "select" ? (
-                  <SelectForm
-                    data={formFields[item]}
-                    labelID={item}
-                    formik={formik}
-                  />
-                ) : formFields[item].type === "date" ? (
-                  <DateForm
-                    data={formFields[item]}
-                    labelID={item}
-                    formik={formik}
-                  />
-                ) : (
-                  <TextFieldForm
-                    data={formFields[item]}
-                    labelID={item}
-                    formik={formik}
-                  />
-                )}
-              </Grid>
-            );
-          })}
-          <Grid size={3}>
-            <Button
-              fullWidth
-              sx={{
-                height: "40px",
-              }}
-              type="submit"
-              variant="contained"
-              color="primary"
-              onClick={formik.handleSubmit}
-            >
-              ارسال
-            </Button>
-          </Grid>
+    <form className="pt-4" onSubmit={formik.handleSubmit}>
+      <Grid container spacing={3}>
+        {objectKeys.map((item) => {
+          // let component = null;
+          // if (formFields[item].type === "select") {
+          //   component = (
+          //     <SelectForm
+          //       data={formFields[item]}
+          //       labelID={item}
+          //       formik={formik}
+          //     />
+          //   );
+          // } else if (formFields[item].type === "date") {
+          //   component = (
+          //     <DateForm
+          //       data={formFields[item]}
+          //       labelID={item}
+          //       formik={formik}
+          //     />
+          //   );
+          // } else {
+          //   component = (
+          //     <TextFieldForm
+          //       data={formFields[item]}
+          //       labelID={item}
+          //       formik={formik}
+          //     />
+          //   );
+          // }
+          return (
+            <Grid key={item} size={3}>
+              {/* {component} */}
+              <FormItem
+                fieldKey={item}
+                formFields={formFields[item]}
+                formik={formik}
+              />
+            </Grid>
+          );
+        })}
+        <Grid size={3}>
+          <Button
+            fullWidth
+            sx={{
+              height: "40px",
+            }}
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            ارسال
+          </Button>
         </Grid>
-      </form>
-    </>
+      </Grid>
+    </form>
   );
 }
 
