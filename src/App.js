@@ -10,20 +10,21 @@ import Title from "./Title/Title";
 import Body from "./FormBody/Body";
 
 const cacheRtl = createCache({
-  key: "muirtl",
+  key: "adapter-date-fns-jalali-demo",
   stylisPlugins: [prefixer, rtlPlugin],
 });
 
 const theme = createTheme({
   direction: "rtl",
   typography: {
-    fontFamily: "IRANSans, Roboto, Arial",
+    fontFamily: "'Vazir FD', IRANSans, Roboto, Arial",
     h6: {
       fontSize: 18,
       fontWeight: 600,
     },
   },
 });
+
 function App() {
   return (
     <>

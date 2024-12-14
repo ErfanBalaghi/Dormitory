@@ -1,6 +1,6 @@
 import { Box, Container } from "@mui/material";
 import FormHeader from "./FormHeader";
-import FormDB from "./FormDB";
+import Form from "./Form";
 
 function Body() {
   return (
@@ -17,7 +17,7 @@ function Body() {
           }}
         >
           <FormHeader />
-          <FormDB />
+          <Form />
         </Box>
       </Container>
     </>

@@ -27,7 +27,7 @@ const Marcker = styled("span")(() => {
 
 function FormHeader() {
   return (
-    <div className="mb-8 border-b">
+    <div className="border-b">
       <Signup variant="text" disableRipple startIcon={<LocalOfferIcon />}>
         فرم ثبت نام اقامتگاه ها
         <Marcker />
